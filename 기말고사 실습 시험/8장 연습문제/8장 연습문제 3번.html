@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>8-3</title>
+    <style>
+      span {
+        visibility: hidden;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>
+      다음 빈 곳에 숨은 단어?
+      <button onclick="showHide()">show/hide</button>
+    </h3>
+    <hr />
+    <ul>
+      <li>I (<span>love</span>) you.</li>
+      <li>Css is Cascading (<span>Style</span>) Sheet.</li>
+      <li>응답하라 (<span>1988</span>).</li>
+    </ul>
+    <script>
+      function showHide() {
+        let span = document.getElementsByTagName("span");
+
+        for (let i = 0; i < span.length; i++) {
+          let s = span[i];
+          let style = window.getComputedStyle(s);
+          let v = style.getPropertyValue("visibility");
+          if (v == "hidden") s.style.visibility = "visible";
+          else s.style.visibility = "hidden";
+        }
+      }
+    </script>
+  </body>
+</html>

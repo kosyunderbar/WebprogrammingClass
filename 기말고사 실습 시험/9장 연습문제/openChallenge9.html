@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>9-7</title>
+    <script>
+      function generateRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      function clickImages() {
+        for (let i = 0; i < 100; i++) {
+          if (document.images[i].src.includes("apple")) {
+            document.images[i].src = "";
+            console.log(document.images[i].src);
+            showImages();
+            break;
+          }
+        }
+      }
+
+      function showImages() {
+        num = generateRandom(1, 100);
+        num = num - 1;
+        document.images[num].src = "apple.png";
+        console.log(document.images[num].src);
+      }
+    </script>
+    <style>
+      table {
+        border: 1px solid #444444;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        width: 100px;
+        height: 95px;
+        border: 1px solid #444444;
+      }
+    </style>
+  </head>
+  <body onload="showImages()">
+    <h3>마우스 클릭 연습</h3>
+    <hr />
+    <div id="div"></div>
+    <script>
+      let code = "";
+      let div = document.getElementById("div");
+
+      code = "<table border=1;><tbody>";
+      for (let n = 0; n < 10; n++) {
+        code += "<tr>";
+        for (let j = 0; j < 10; j++) {
+          code += "<td><img src='' onclick='clickImages()'></td>";
+        }
+        j = 0;
+        code += "</tr>";
+      }
+      code += "</tbody></table>";
+      div.innerHTML = code;
+    </script>
+  </body>
+</html>
